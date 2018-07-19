@@ -1,0 +1,123 @@
+
+\documentclass{llncs}
+
+
+%
+\usepackage[utf8]{inputenc}
+
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{xcolor}
+
+
+%
+\title{Project Report Data Extraction, Search, Analysis and Benchmark}
+
+%
+\titlerunning{My Paper}  % abbreviated title (for running head)
+%                                     also used for the TOC unless
+%                                     \toctitle is used
+%
+\author{Harsh Shah}
+
+\institute{Paderborn University}
+
+
+\date{July 2018}
+
+\begin{document}
+\maketitle              % typeset the title 
+
+
+\section{Task definition}
+To extract the sentences from training data (OKE-Open Knowledge Extraction files) and provide it to every extractors currently working and take the responses of every extractors and implement machine learning model. Machine leaning model will predict the efficiency of extractor and provide result which extractor is efficient for which types of  data and can be used in future on new dataset to find and run the most efficient  extractor for given data.\\
+ 
+
+
+
+
+\section{Technical description}
+I have prepared the diagram figure 1 that gives  summary of the work-flow architecture of my task to predict the efficiency of extractor using machine learning model.
+\begin{figure}
+\includegraphics[width=\textwidth]{Architecture.jpg}
+\caption{Workflow diagram} 
+\label{figure 1:}
+\end{figure}
+
+\subsection{Extraction}
+So first whole dataset will be divided  into two-part Training Data and test dataset.OKE dataset contain data files in .ttl format. Each data set contains sentences take from OKE (Open Knowledge Extraction) dataset. Such as “ Obama was born in USA” or “Berlin is capital of Germany”. So, First I have extracted string sentences (nif:isstring) from training data and sort the input sentences with respect to file number amd store them in string list array. order and provide it to every extractor.
+
+
+\subsection{Extractor responses }
+I have take the input sentences convert it into the form of exraction url and give it to every extractors. I took the responses of every extractors and store them in string list array. So, that can be used as input for machine learning model. Preforming this task, I face some  \textbf{challenges} as many time extractors were not working or working but not giving accurate response. Another challenge I was facing is that response of every extractor was not in the similar in terms of the structure which can be solve after getting suggestion from Professor. Ricardo to first transform the responses of every extractor and make it similar in terms of structure by using SPARQL query on every responses of extractors.
+\subsection{Compare with OKE answer}
+After transforming the response into unified format I can compare it with its ideal answer of extractors which is contain in OKE dataset. After comparing it with OKE data set based on the performance of every extractor most efficient extractor for given data will be selected.
+\subsection{Features extraction}
+Next, task that I have done is to extract the features of every input sentences(string). I have used WEKA document classification techniques for it. First, I have to look on the various string filters available in WEKA for text data . After taking look and research about the  various filter property I have applied 'strtowordvector' an unsupervised filter from WEKA library which convert the string data on the word format. using some tokenizer property.
+\subsection{Machine Learning Model}
+So now feature’s extraction from sentences and extractor response were used as input for building Machine Learning model.  Machine Learning model will be multi class classification problem.  As shown in figure we can use the implemented machine learning model on test dataset in similar way to find the efficiency of extractor. We can find the efficiency of Machine Learning by checking its performance in WEKA dataset and can improve the performance of Machine learning model as per requirement.\\
+So, this machine learning model can be uses in the future on new dataset. As shown in figure, after extracting feature from input sentences we can parse the sentence to most efficient extractor for given dataset.
+
+
+
+
+
+
+ 
+
+\section{Learned skills}
+\begin {itemize}
+
+
+\item[$\bullet$ ]  First two weeks were allocated for me to familiarize with the technologies, tools are currently using in our project. So, I learned about Spring Boot(Eureka) \textbf{Microservice Architecture.}
+\item[$\bullet$ ]  I also learned about the how to build and run\textbf{ Maven} project. How to add maven dependency for the project.
+\item[$\bullet$ ]  I also learned the basics about Docker. Use of Docker for out project and how to run docker container in system. 
+\item[$\bullet$ ]  Working of various \textbf{extractor} for our project and generation of\textbf{ RDF} triple for extractors
+\item[$\bullet$ ]  I have previously used Git and Github. But I was not have worked on git on big live project. So, by working on git and Github in the project has \textbf{improved} my practical knowledge and learned about some great features of \textbf{Git and Github.}
+\item[$\bullet$ ]  I have \textbf{researched }about the \textbf{Ensemble Learning,} machine Learning techniques which multiple model’s classifiers or experts, are strategically generated and combined to solve a problem. I also have learned about the following research paper about Ensemble Learning\\
+\color{red}
+\url{https://svn.aksw.org/papers/2014/ISWC_EL4NER/public.pdf}
+\color{black}
+\item[$\bullet$ ]  For mid semester presentation I have selected the topic \textbf{DBpedia} for presentation. I have researched about DBpedia and its working. I have read about the following research paper about DBpedia.\\
+\color{red}
+\url{https://link.springer.com/content/pdf/10.1007/978-3-540-76298-0_52.pdf}
+\color{black}
+\item[$\bullet$ ] I have learned about the how use and implement\textbf{ WEKA tools}. Weka document classification, filter, tokenizer, create data base, features extraction, attribute selection and many more functionality of WEKA.
+\end{itemize}
+
+
+\section{Evaluation}
+
+ \begin {itemize}
+
+\item[$\bullet$ ] Extraction from the training sentences and to take the response of every extractor is completed. 
+\item I have also implemented program which will built the training files for weka classification. 
+\item have researched about the various filters and classifier which can be built perfect for the classification. I have also worked on Feature extraction from input sentences using various filter and classification algorithm in the weka.
+\item Transforming response of every extractor and make it similar in terms of structure part is remained for which I would work on the next semester.  
+\item  have already worked Feature’s extraction from input sentence using various weka filter is completed.
+\item Currently I have implemented simple machine learning classifier in weka which will predict the responses of extractor is ideal or not. After making output in unified structure I will extent current machine learning model for multi class classification. 
+
+\end{itemize}
+ So, in summary I was able to gain knowledge by working in this semester for the project. I will use this knowledge in the next semester to complete the remaining task successfully.\\
+ I have merged my currently implemented code in ensemble-ms repository but as my working branch ensemble was too much old and merging it with master branch has messed up structure. So, I lost my all commits history then  me and  Ändre(group member) created new branch ensemble-new branch and committed my all work there and merged it in master. So unfortunately my all commit history are deleted  but I have provided link below there are some commits history in my account repository and forked sask  project repository . I have provided link for the reference.\\
+\color{red}
+\url{https://github.com/hjshah142/DataExtraction}\\
+\url{https://github.com/hjshah142/sask/commits/Ensemble}\\
+\color{black}
+\section{Future Work}
+\begin {itemize}
+\item[$\bullet$ ] To transform the responses of extractors in unified format  in terms of structure so that it can be compare with its ideal response. 
+\item[$\bullet$ ] Implement Muti-class classifier machine learning by extending current Machine Learning model which can predict the most efficient extractor for the given data. 
+\item[$\bullet$ ] Improve the Machine Learning model performance as per requirement. 
+\item[$\bullet$ ]Finish and integrate the work with sask project master branch.
+
+
+
+
+\end{itemize}
+\clearpage
+
+\end{document}
+
